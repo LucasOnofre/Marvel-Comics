@@ -1,0 +1,88 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="horizontalMarginDetail">4dp</dimen>
+    <dimen name="horizontalMarginSmall">8dp</dimen>
+    <dimen name="horizontalMargin">16dp</dimen>
+    <dimen name="horizontalMarginLarge">32dp</dimen>
+    <dimen name="verticalMarginDetail">4dp</dimen>
+    <dimen name="verticalMarginSmall">8dp</dimen>
+    <dimen name="verticalMargin">16dp</dimen>
+    <dimen name="verticalMarginLarge">32dp</dimen>
+    <dimen name="verticalMarginXXXLarge">50dp</dimen>
+    <dimen name="horizontalMarginMedium">24dp</dimen>
+
+    <!--BUTTON-->
+    <dimen name="buttonHeight">50dp</dimen>
+
+    <!--CORNER-->
+    <dimen name="roundCornerNone">0dp</dimen>
+    <dimen name="roundCornerSmall">4dp</dimen>
+    <dimen name="roundCornerMedium">10dp</dimen>
+    <dimen name="roundCornerBig">16dp</dimen>
+    <dimen name="roundCornerXBig">32dp</dimen>
+    <dimen name="roundCornerPill">999dp</dimen>
+
+    <!--BORDER WIDTH-->
+    <dimen name="borderWidthNone">0dp</dimen>
+    <dimen name="borderWidthSmall">1dp</dimen>
+    <dimen name="borderWidthMedium">2dp</dimen>
+    <dimen name="borderWidthBig">4dp</dimen>
+
+    <!--OPACITY-->
+    <item name="opacityOpaque" format="float" type="dimen">0.72</item>
+    <item name="opacityMedium" format="float" type="dimen">0.50</item>
+    <item name="opacityLight" format="float" type="dimen">0.24</item>
+
+    <!--TEXT SIZES-->
+    <dimen name="textTitle">25sp</dimen>
+    <dimen name="textBig">15sp</dimen>
+    <dimen name="textBoldMedium">12sp</dimen>
+    <dimen name="textRegularMedium">12sp</dimen>
+    <dimen name="textParagraph">15sp</dimen>
+    <dimen name="textSmall">10sp</dimen>
+    <dimen name="textMedium">20sp</dimen>
+
+    <!--TEXT SPACING-->
+    <dimen name="spacingTitle">0dp</dimen>
+    <dimen name="spacingTitleSmall">0dp</dimen>
+    <dimen name="spacingBig">0dp</dimen>
+    <dimen name="spacingMedium">0dp</dimen>
+    <dimen name="spacingParagraph">0dp</dimen>
+    <dimen name="spacingSmall">0dp</dimen>
+    <dimen name="spacingExtraSmall">0dp</dimen>
+
+    <!--TEXT LINES-->
+    <dimen name="lineTitle">0dp</dimen>
+    <dimen name="lineTitleSmall">0dp</dimen>
+    <dimen name="lineBig">0dp</dimen>
+    <dimen name="lineMedium">0dp</dimen>
+    <dimen name="lineParagraph">0dp</dimen>
+    <dimen name="lineSmall">0dp</dimen>
+    <dimen name="lineExtraSmall">0dp</dimen>
+
+    <!--PLACEHOLDERS-->
+    <dimen name="placeholderDefaultIconSize">65dp</dimen>
+    <dimen name="placeholderDefaultTextSize">@dimen/textBig</dimen>
+
+    <!--DEFAULT-->
+    <dimen name="statusBarSize">25dp</dimen>
+
+    <!--ALBUMS-->
+    <dimen name="albumSize">72dp</dimen>
+    <dimen name="photoMinHeight">150dp</dimen>
+    <dimen name="photoMaxHeight">300dp</dimen>
+    <dimen name="fab_max_image_size">35dp</dimen>
+    <dimen name="item_establishment_corner_radius">10dp</dimen>
+    <dimen name="item_establishment_card_elevation">4dp</dimen>
+
+    <!--COMMON DIALOG-->
+    <dimen name="dialogImageWidth">75dp</dimen>
+    <dimen name="dialogImageHeight">75dp</dimen>
+    <dimen name="dialogCloseImageWidth">22dp</dimen>
+    <dimen name="dialogCloseImageHeight">22dp</dimen>
+    <dimen name="radio_button_size">100dp</dimen>
+
+    <dimen name="clickableItemsPadding">8dp</dimen>
+    <dimen name="textPadding">8dp</dimen>
+
+</resources>
