@@ -12,12 +12,11 @@ class AddHeaderInterceptor : Interceptor {
                 "Client-ID",
                 ""
                 //BuildConfig.CLIENT_ID_HEADER
-            ),
-            RequestHeaderInterceptor(
-                "Accept",
-                ""
-                //BuildConfig.API_VERSION_JSON_HEADER
             )
+//            RequestHeaderInterceptor(
+//                "Accept",
+//                "" BuildConfig.API_VERSION_JSON_HEADER
+//            )
         )
 
     @Throws(IOException::class)

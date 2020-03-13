@@ -13,6 +13,9 @@ import androidx.core.view.contains
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.onoffrice.marvel_comics.R
 
+/**
+ * Created by mobile2you on 18/08/16.
+ */
 abstract class BaseActivity(private val layoutRes: Int?) : AppCompatActivity() {
 
     protected val tag = javaClass.enclosingClass?.simpleName ?: javaClass.simpleName

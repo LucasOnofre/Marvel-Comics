@@ -1,10 +1,13 @@
 package com.onoffrice.marvel_comics.ui.splash
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.onoffrice.marvel_comics.R
+import com.onoffrice.marvel_comics.ui.characters.createCharactersActivityIntent
+import com.onoffrice.marvel_comics.utils.extensions.startActivitySlideTransition
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
@@ -13,16 +16,16 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         setLogoAnimation()
-        //setDelayForActivity()
+        setDelayForActivity()
     }
 
-//    private fun setDelayForActivity() {
-//        val handle = Handler()
-//        handle.postDelayed({
-//            startActivitySlideTransition(createTopGamesIntent())
-//            finish()
-//            }, 4000)
-//    }
+    private fun setDelayForActivity() {
+        val handle = Handler()
+        handle.postDelayed({
+            startActivitySlideTransition(createCharactersActivityIntent())
+            finish()
+            }, 4000)
+    }
 
     private fun setLogoAnimation() {
         val animation = AnimationUtils.loadAnimation(this, R.anim.logo_transition)
