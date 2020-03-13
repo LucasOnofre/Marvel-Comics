@@ -85,4 +85,19 @@
     <dimen name="clickableItemsPadding">8dp</dimen>
     <dimen name="textPadding">8dp</dimen>
 
+
+    <dimen name="game_item_card_radius">4dp</dimen>
+    <dimen name="game_detail_poster_radius">8dp</dimen>
+    <dimen name="poster_height">250dp</dimen>
+    <dimen name="album_title">16dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="big_margin">16dp</dimen>
+    <dimen name="medium_margin">8dp</dimen>
+    <dimen name="medium_padding">8dp</dimen>
+    <dimen name="game_poster_background_width">200dp</dimen>
+    <dimen name="game_poster_background_height">300dp</dimen>
+    <dimen name="game_info_text_size">20dp</dimen>
+    <dimen name="game_name_text_size">28dp</dimen>
+    <dimen name="splash_title_size">30sp</dimen>
+
 </resources>

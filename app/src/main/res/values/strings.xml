@@ -12,4 +12,11 @@
     <string name="action_draw_route">Traçar Rota</string>
     <string name="action_take_picture">Tirar Foto</string>
     <string name="action_try_again">Tentar Novamente</string>
+
+
+    <string name="poster_game_title">Titulo</string>
+    <string name="game_detail_channels_title_txt">Canais:</string>
+    <string name="game_detail_views_title_txt">Visualizações:</string>
+    <string name="top_game_toolbar_title">Melhores Jogos</string>
+    <string name="splash_logo_title">Top Games!</string>
 </resources>
