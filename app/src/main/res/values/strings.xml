@@ -1,4 +1,15 @@
 <resources>
-    <string name="app_name">MyTopGames</string>
+    <string name="app_name">Marvel Comics</string>
     <string name="common_error">Erro inesperado</string>
+
+    <!--ACTIONS-->
+    <string name="action_ok">OK</string>
+    <string name="action_ok_i_got_it">OK, Entendi</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_continue">Continuar</string>
+    <string name="action_yes">Sim</string>
+    <string name="action_no">Não</string>
+    <string name="action_draw_route">Traçar Rota</string>
+    <string name="action_take_picture">Tirar Foto</string>
+    <string name="action_try_again">Tentar Novamente</string>
 </resources>
