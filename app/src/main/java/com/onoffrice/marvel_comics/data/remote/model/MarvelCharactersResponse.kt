@@ -3,35 +3,36 @@ package com.onoffrice.marvel_comics.data.remote.model
 import com.google.gson.annotations.SerializedName
 
 
-data class MarvelCharactersResponse(
+data class CharacterDataWrapper(
 
     @SerializedName("data")
-    val charactersData: CharactersData
+    val charactersData: CharacterDataContainer
 )
 
-data class CharactersData(
+data class CharacterDataContainer(
     val count: Int,
     val limit: Int,
     val offset: Int,
-    val charactersInfo: List<CharactersInfo>,
+    @SerializedName("results")
+    val characters: List<Character>,
     val total: Int
 )
 
-data class CharactersInfo(
-    val comics: Comics,
+data class Character(
+    val comics: Comic,
     val description: String,
-    val events: Events,
+    val events: Event,
     val id: Int,
     val modified: String,
     val name: String,
     val resourceURI: String,
-    val series: Series,
-    val stories: Stories,
+    val series: Serie,
+    val stories: Storie,
     val thumbnail: Thumbnail,
     val urls: List<Url>
 )
 
-data class Comics(
+data class Comic(
     val available: Int,
     val collectionURI: String,
     val items: List<Item>,
@@ -43,33 +44,38 @@ data class Item(
     val resourceURI: String
 )
 
-data class Events(
+data class Event(
     val available: Int,
     val collectionURI: String,
-    val items: List<Any>,
+    val eventSummary: List<EventSummary>,
     val returned: Int
 )
 
-data class Series(
-    val available: Int,
-    val collectionURI: String,
-    val items: List<ItemX>,
-    val returned: Int
-)
-
-data class ItemX(
+data class EventSummary(
     val name: String,
     val resourceURI: String
 )
 
-data class Stories(
+data class Serie(
     val available: Int,
     val collectionURI: String,
-    val items: List<ItemXX>,
+    val serieSummary: List<SerieSummary>,
     val returned: Int
 )
 
-data class ItemXX(
+data class SerieSummary(
+    val name: String,
+    val resourceURI: String
+)
+
+data class Storie(
+    val available: Int,
+    val collectionURI: String,
+    val storySummary: List<StorySummary>,
+    val returned: Int
+)
+
+data class StorySummary(
     val name: String,
     val resourceURI: String,
     val type: String
@@ -78,7 +84,12 @@ data class ItemXX(
 data class Thumbnail(
     val extension: String,
     val path: String
-)
+
+)  {
+    fun getPathExtension(): String {
+    return path + "." + extension
+    }
+}
 
 data class Url(
     val type: String,

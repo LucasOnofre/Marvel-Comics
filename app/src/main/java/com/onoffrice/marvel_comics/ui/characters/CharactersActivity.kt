@@ -1,23 +1,37 @@
 package com.onoffrice.marvel_comics.ui.characters
 
 import android.content.Context
+import android.nfc.tech.MifareUltralight
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.onoffrice.marvel_comics.R
+import com.onoffrice.marvel_comics.data.remote.model.Character
 import com.onoffrice.marvel_comics.ui.AppInjector
 import com.onoffrice.marvel_comics.ui.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_characters.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 
 class CharactersActivity : BaseActivity(R.layout.activity_characters) {
 
-//    private val adapter: FaqAdapter by lazy {
-//        FaqAdapter(context = this).apply {
-//            faqRv.setup(this, LinearLayoutManager(this@FaqActivity, LinearLayoutManager.VERTICAL, false))
-//            faqRv.isNestedScrollingEnabled = true
-//        }
-//    }
+    private var isLoading: Boolean = false
+
+    private val charactersAdapter: CharactersAdapter by lazy {
+        val adapter = CharactersAdapter(object : CharactersAdapter.CharacterClickListener{
+            override fun onClickCharacter(character: Character) {
+                toast(character.name)
+            }
+        })
+
+        val layoutManager        = GridLayoutManager(this, 2)
+        charactersRv.layoutManager = layoutManager
+        charactersRv.adapter       = adapter
+        charactersRv.addOnScrollListener(onScrollListener())
+        adapter
+    }
 
     private val viewModel by lazy {
         val factory = AppInjector.getCharacterViewModelFactory()
@@ -26,21 +40,46 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setToolbar("")
+        setToolbar("Characters")
         setObservers()
-        setListeners()
-        viewModel.getCharacters(10)
+        viewModel.getCharacters(0)
     }
 
-    private fun setListeners() {
+    private fun onScrollListener(): RecyclerView.OnScrollListener {
+        return object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val visibleItemCount = recyclerView.layoutManager?.childCount ?: 0
+                val totalItemCount = recyclerView.layoutManager?.itemCount ?: 0
+                val firstVisibleItemPosition = (recyclerView.layoutManager as GridLayoutManager).findFirstVisibleItemPosition()
+
+                if (!isLoading && visibleItemCount + firstVisibleItemPosition >= totalItemCount
+                    && firstVisibleItemPosition >= 0
+                    && totalItemCount >= MifareUltralight.PAGE_SIZE
+                ) {
+                    isLoading = true
+                    displayLoading(isLoading)
+                    viewModel.getCharacters(totalItemCount)
+                }
+            }
+        }
     }
 
     private fun setObservers() {
         viewModel.run {
-            characters.observe(this@CharactersActivity, Observer { toast(it.toString())})
-           // loadingEvent.observe(this@CharactersActivity, Observer { showLoading(it) })
+            characters.observe(this@CharactersActivity, Observer { displayCharactersList(it)})
+            loadingEvent.observe(this@CharactersActivity, Observer { displayLoading(it) })
             errorEvent.observe(this@CharactersActivity, Observer { displayError(it) })
         }
+    }
+
+    private fun displayCharactersList(characters: List<Character>) {
+        isLoading = false
+        charactersAdapter.setCharacters(characters)
+    }
+
+    private fun displayLoading(loading: Boolean) {
+        swipeRefresh.isRefreshing = loading
     }
 
     private fun displayError(message: String) {
