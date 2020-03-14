@@ -40,7 +40,7 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setToolbar("Characters")
+        setToolbar(getString(R.string.characters_toolbar_title))
         setObservers()
         viewModel.getCharacters(0)
     }
