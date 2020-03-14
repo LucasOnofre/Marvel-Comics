@@ -15,17 +15,16 @@ class CharactersViewModel(private val repository: CharactersRepository) : ViewMo
     val characters =  SingleLiveEvent<List<Character>>()
     val loadingEvent = SingleLiveEvent<Boolean>()
     val errorEvent = SingleLiveEvent<String>()
-//
+
      private val disposable = CompositeDisposable()
-//
-//
+
     fun getCharacters(offset: Int) {
         disposable.add(repository.getCharacters(LIMIT_REGISTER, offset).singleSubscribe(
                 onLoading = {
                     loadingEvent.value = it
                 },
                 onSuccess = {
-                    var charactersResponse = it.charactersData.characters
+                    val charactersResponse = it.charactersData.characters
                     charactersResponse.let { list ->
                        if (!list.isNullOrEmpty()) {
                           characters.value = list
@@ -38,7 +37,6 @@ class CharactersViewModel(private val repository: CharactersRepository) : ViewMo
                     errorEvent.value = it.message
                 }))
     }
-
 
     override fun onCleared() {
         disposable.dispose()
