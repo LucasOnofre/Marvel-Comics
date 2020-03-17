@@ -33,15 +33,6 @@
     <item name="opacityMedium" format="float" type="dimen">0.50</item>
     <item name="opacityLight" format="float" type="dimen">0.24</item>
 
-    <!--TEXT SIZES-->
-    <dimen name="textTitle">25sp</dimen>
-    <dimen name="textBig">15sp</dimen>
-    <dimen name="textBoldMedium">12sp</dimen>
-    <dimen name="textRegularMedium">12sp</dimen>
-    <dimen name="textParagraph">15sp</dimen>
-    <dimen name="textSmall">10sp</dimen>
-    <dimen name="textMedium">20sp</dimen>
-
     <!--TEXT SPACING-->
     <dimen name="spacingTitle">0dp</dimen>
     <dimen name="spacingTitleSmall">0dp</dimen>
@@ -60,9 +51,6 @@
     <dimen name="lineSmall">0dp</dimen>
     <dimen name="lineExtraSmall">0dp</dimen>
 
-    <!--PLACEHOLDERS-->
-    <dimen name="placeholderDefaultIconSize">65dp</dimen>
-    <dimen name="placeholderDefaultTextSize">@dimen/textBig</dimen>
 
     <!--DEFAULT-->
     <dimen name="statusBarSize">25dp</dimen>
@@ -85,19 +73,25 @@
     <dimen name="clickableItemsPadding">8dp</dimen>
     <dimen name="textPadding">8dp</dimen>
 
+    <!--TEXT SIZE-->
+    <dimen name="album_title">16sp</dimen>
+    <dimen name="character_info_text_size">16sp</dimen>
+    <dimen name="character_name_text_size">28sp</dimen>
+    <dimen name="splash_title_size">30sp</dimen>
 
-    <dimen name="game_item_card_radius">4dp</dimen>
-    <dimen name="game_detail_poster_radius">8dp</dimen>
+
+    <dimen name="character_item_card_radius">4dp</dimen>
+    <dimen name="character_detail_poster_radius">8dp</dimen>
     <dimen name="poster_height">250dp</dimen>
-    <dimen name="album_title">16dp</dimen>
+
+    <!--SPACING-->
     <dimen name="card_margin">8dp</dimen>
     <dimen name="big_margin">16dp</dimen>
     <dimen name="medium_margin">8dp</dimen>
     <dimen name="medium_padding">8dp</dimen>
-    <dimen name="game_poster_background_width">200dp</dimen>
-    <dimen name="game_poster_background_height">300dp</dimen>
-    <dimen name="game_info_text_size">20dp</dimen>
-    <dimen name="game_name_text_size">28dp</dimen>
-    <dimen name="splash_title_size">30sp</dimen>
+
+    <!--CUSTOM-->
+    <dimen name="character_poster_background_width">200dp</dimen>
+    <dimen name="character_poster_background_height">300dp</dimen>
 
 </resources>

@@ -1,14 +1,16 @@
 package com.onoffrice.marvel_comics.ui
 
 import com.onoffrice.marvel_comics.data.repositories.CharactersRepository
+import com.onoffrice.marvel_comics.ui.characterDetail.CharacterDetailViewModel
 import com.onoffrice.marvel_comics.ui.characters.CharactersViewModel
 
 
 object AppInjector {
 
     //VIEW MODELS
-
     fun getCharacterViewModelFactory() = CharactersViewModel.Factory(CharactersRepository)
+
+    fun getCharacterDetailViewModelFactory() = CharacterDetailViewModel.Factory(CharactersRepository)
 
 
 //    //REPOSITORIES

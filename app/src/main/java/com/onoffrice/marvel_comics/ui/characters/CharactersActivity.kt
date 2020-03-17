@@ -11,6 +11,8 @@ import com.onoffrice.marvel_comics.R
 import com.onoffrice.marvel_comics.data.remote.model.Character
 import com.onoffrice.marvel_comics.ui.AppInjector
 import com.onoffrice.marvel_comics.ui.base.BaseActivity
+import com.onoffrice.marvel_comics.ui.characterDetail.createCharacterDetailActivityIntent
+import com.onoffrice.marvel_comics.utils.extensions.startActivitySlideTransition
 import kotlinx.android.synthetic.main.activity_characters.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
@@ -22,11 +24,11 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
     private val charactersAdapter: CharactersAdapter by lazy {
         val adapter = CharactersAdapter(object : CharactersAdapter.CharacterClickListener{
             override fun onClickCharacter(character: Character) {
-                toast(character.name)
+                startActivitySlideTransition(createCharacterDetailActivityIntent(character))
             }
         })
 
-        val layoutManager        = GridLayoutManager(this, 2)
+        val layoutManager          = GridLayoutManager(this, 2)
         charactersRv.layoutManager = layoutManager
         charactersRv.adapter       = adapter
         charactersRv.addOnScrollListener(onScrollListener())
@@ -42,15 +44,15 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
         super.onCreate(savedInstanceState)
         setToolbar(getString(R.string.characters_toolbar_title))
         setObservers()
-        viewModel.getCharacters(0)
+        viewModel.getCharacters()
     }
 
     private fun onScrollListener(): RecyclerView.OnScrollListener {
         return object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                val visibleItemCount = recyclerView.layoutManager?.childCount ?: 0
-                val totalItemCount = recyclerView.layoutManager?.itemCount ?: 0
+                val visibleItemCount         = recyclerView.layoutManager?.childCount ?: 0
+                val totalItemCount           = recyclerView.layoutManager?.itemCount ?: 0
                 val firstVisibleItemPosition = (recyclerView.layoutManager as GridLayoutManager).findFirstVisibleItemPosition()
 
                 if (!isLoading && visibleItemCount + firstVisibleItemPosition >= totalItemCount
@@ -85,7 +87,6 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
     private fun displayError(message: String) {
       toast(message)
     }
-
 }
 fun Context.createCharactersActivityIntent() = intentFor<CharactersActivity>()
 

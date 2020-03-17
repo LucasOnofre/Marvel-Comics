@@ -18,7 +18,6 @@ class CharactersAdapter (
         fun onClickCharacter(character: Character)
     }
 
-
     var list: MutableList<Character> = mutableListOf()
         set(value) {
             field = value
@@ -28,11 +27,9 @@ class CharactersAdapter (
     fun setCharacters(characters: List<Character>) {
         list.addAll(characters)
         notifyDataSetChanged()
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): GameViewHolderItem {
-
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.adapter_character_item, parent, false)
 
@@ -44,7 +41,6 @@ class CharactersAdapter (
     }
 
     override fun onBindViewHolder(holder: GameViewHolderItem, position: Int) {
-
         val characterItem = list[position]
 
         characterItem.let {
@@ -60,6 +56,6 @@ class CharactersAdapter (
 
     class GameViewHolderItem(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val poster = itemView.poster
-        val title = itemView.title
+        val title  = itemView.title
     }
 }

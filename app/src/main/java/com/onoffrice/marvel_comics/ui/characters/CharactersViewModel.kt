@@ -12,13 +12,13 @@ var LIMIT_REGISTER = 20
 
 class CharactersViewModel(private val repository: CharactersRepository) : ViewModel() {
 
-    val characters =  SingleLiveEvent<List<Character>>()
+    val characters   =  SingleLiveEvent<List<Character>>()
+    val errorEvent   = SingleLiveEvent<String>()
     val loadingEvent = SingleLiveEvent<Boolean>()
-    val errorEvent = SingleLiveEvent<String>()
 
      private val disposable = CompositeDisposable()
 
-    fun getCharacters(offset: Int) {
+    fun getCharacters(offset: Int = 0) {
         disposable.add(repository.getCharacters(LIMIT_REGISTER, offset).singleSubscribe(
                 onLoading = {
                     loadingEvent.value = it

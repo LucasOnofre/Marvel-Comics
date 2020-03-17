@@ -10,6 +10,6 @@ object Constants {
     const val LANGUAGE_PT = "pt"
     const val COUNTRY_BR = "BR"
 
-    //const val EXTRA_GAME_DETAIL = "$PACKAGE_NAME.EXTRA_GAME_DETAIL"
+    const val EXTRA_CHARACTER_DETAIL = "$PACKAGE_NAME.EXTRA_CHARACTER_DETAIL"
 
 }
