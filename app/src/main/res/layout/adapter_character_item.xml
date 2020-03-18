@@ -11,8 +11,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_margin="@dimen/card_margin"
-        android:elevation="8dp"
-        card_view:cardCornerRadius="@dimen/game_item_card_radius">
+        android:elevation="@dimen/character_item_card_elevation"
+        card_view:cardCornerRadius="@dimen/character_item_card_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -32,10 +32,12 @@
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="@dimen/verticalMarginSmall"
+                android:layout_marginBottom="@dimen/verticalMarginSmall"
                 android:gravity="center"
                 android:text="@string/poster_game_title"
+                android:maxLines="3"
+                android:ellipsize="end"
                 android:textColor="@color/album_title"
                 android:textSize="@dimen/album_title"
                 android:textStyle="bold"

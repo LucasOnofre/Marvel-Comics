@@ -30,15 +30,14 @@ class CharacterDetailActivity : BaseActivity(R.layout.activity_character_detail)
 
     private fun setObservers() {
         viewModel.run {
-            character.observe(this@CharacterDetailActivity, Observer { displayCharactersDetail(it)})
+            character.observe(this@CharacterDetailActivity,    Observer { displayCharactersDetail(it)})
             loadingEvent.observe(this@CharacterDetailActivity, Observer { displayLoading(it) })
-            errorEvent.observe(this@CharacterDetailActivity, Observer { displayError(it) })
+            errorEvent.observe(this@CharacterDetailActivity,   Observer { displayError(it) })
         }
     }
 
     private fun displayCharactersDetail(character: Character) {
-        setToolbar("",true)
-        characterName.text = character.name
+        setToolbar(character.name,true)
         characterBio.text  = character.description
 
         //Loads the game poster using Picasso

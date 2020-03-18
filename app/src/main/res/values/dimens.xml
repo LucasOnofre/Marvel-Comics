@@ -13,6 +13,7 @@
 
     <!--BUTTON-->
     <dimen name="buttonHeight">50dp</dimen>
+    <dimen name="buttonWidth">50dp</dimen>
 
     <!--CORNER-->
     <dimen name="roundCornerNone">0dp</dimen>
@@ -27,6 +28,7 @@
     <dimen name="borderWidthSmall">1dp</dimen>
     <dimen name="borderWidthMedium">2dp</dimen>
     <dimen name="borderWidthBig">4dp</dimen>
+
 
     <!--OPACITY-->
     <item name="opacityOpaque" format="float" type="dimen">0.72</item>
@@ -75,10 +77,13 @@
 
     <!--TEXT SIZE-->
     <dimen name="album_title">16sp</dimen>
+    <dimen name="button_text_size">16sp</dimen>
     <dimen name="character_info_text_size">16sp</dimen>
     <dimen name="character_name_text_size">28sp</dimen>
     <dimen name="splash_title_size">30sp</dimen>
 
+    <!--CHARACTER ITEM-->
+    <dimen name="character_item_card_elevation">8dp</dimen>
 
     <dimen name="character_item_card_radius">4dp</dimen>
     <dimen name="character_detail_poster_radius">8dp</dimen>

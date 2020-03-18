@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <ImageView
@@ -14,8 +14,10 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@color/colorPrimary" />
 
     <ImageView
@@ -30,21 +32,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/image_bottom_gradient" />
 
-
-    <TextView
-        android:id="@+id/characterName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Character Name"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/character_name_text_size"
-        android:textStyle="bold"
-        android:layout_marginBottom="@dimen/verticalMarginLarge"
-        app:layout_constraintBottom_toTopOf="@+id/characterBio"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/characterBio"
         android:layout_width="0dp"
@@ -54,12 +41,27 @@
         android:text="Character Bio"
         android:maxLines="3"
         android:ellipsize="end"
+        android:layout_marginStart="@dimen/verticalMargin"
+        android:layout_marginEnd="@dimen/verticalMargin"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/character_info_text_size"
         app:layout_constraintBottom_toBottomOf="@+id/characterPoster"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/mostExpensiveComicBtn"
+        android:layout_width="@dimen/buttonHeight"
+        android:layout_height="@dimen/buttonWidth"
+        android:background="@drawable/btn_background"
+        android:text="@string/btn_most_expensive_text"
+        android:textSize="@dimen/button_text_size"
+        android:textColor="@color/text_color_selector"
+        android:layout_marginTop="@dimen/verticalMargin"
+        android:layout_marginEnd="@dimen/verticalMargin"
+        app:layout_constraintEnd_toEndOf="@+id/characterPoster"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <include
             android:id="@+id/toolbar"

@@ -12,7 +12,7 @@ import io.reactivex.disposables.CompositeDisposable
 
 class CharacterDetailViewModel(private val repository: CharactersRepository) : ViewModel() {
 
-    val character   = SingleLiveEvent<Character>()
+    val character    = SingleLiveEvent<Character>()
     val errorEvent   = SingleLiveEvent<String>()
     val loadingEvent = SingleLiveEvent<Boolean>()
 
@@ -22,13 +22,10 @@ class CharacterDetailViewModel(private val repository: CharactersRepository) : V
        character.value =  extras?.getSerializable(Constants.EXTRA_CHARACTER_DETAIL) as Character
     }
 
-
     override fun onCleared() {
         disposable.dispose()
         super.onCleared()
     }
-
-
 
     class Factory(private val repository: CharactersRepository) : ViewModelProvider.NewInstanceFactory() {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {

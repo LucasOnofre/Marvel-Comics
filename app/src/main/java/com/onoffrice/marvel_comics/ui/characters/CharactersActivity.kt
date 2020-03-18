@@ -42,7 +42,6 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setToolbar(getString(R.string.characters_toolbar_title))
         setObservers()
         viewModel.getCharacters()
     }
@@ -69,9 +68,9 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
 
     private fun setObservers() {
         viewModel.run {
-            characters.observe(this@CharactersActivity, Observer { displayCharactersList(it)})
-            loadingEvent.observe(this@CharactersActivity, Observer { displayLoading(it) })
-            errorEvent.observe(this@CharactersActivity, Observer { displayError(it) })
+            characters.observe(this@CharactersActivity,  Observer { displayCharactersList(it)})
+            loadingEvent.observe(this@CharactersActivity,Observer { displayLoading(it) })
+            errorEvent.observe(this@CharactersActivity,  Observer { displayError(it) })
         }
     }
 
