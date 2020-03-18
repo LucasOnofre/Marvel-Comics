@@ -10,12 +10,12 @@ import com.onoffrice.marvel_comics.data.remote.model.Character
 import com.onoffrice.marvel_comics.ui.AppInjector
 import com.onoffrice.marvel_comics.ui.base.BaseActivity
 import com.onoffrice.marvel_comics.utils.extensions.loadImage
+import com.onoffrice.marvel_comics.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.activity_character_detail.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 
 class CharacterDetailActivity : BaseActivity(R.layout.activity_character_detail) {
-
 
     private val viewModel by lazy {
         val factory = AppInjector.getCharacterDetailViewModelFactory()
@@ -24,8 +24,15 @@ class CharacterDetailActivity : BaseActivity(R.layout.activity_character_detail)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setObservers()
         viewModel.getExtras(intent.extras)
+        setObservers()
+        setListeners()
+    }
+
+    private fun setListeners() {
+        mostExpensiveComicBtn.setOnClickListener {
+            viewModel.getCharacterComics()
+        }
     }
 
     private fun setObservers() {
@@ -40,11 +47,13 @@ class CharacterDetailActivity : BaseActivity(R.layout.activity_character_detail)
         setToolbar(character.name,true)
         characterBio.text  = character.description
 
-        //Loads the game poster using Picasso
+        //Loads the character poster using Picasso
         characterPoster.loadImage(character.thumbnail.getPathExtension())
     }
 
-    private fun displayLoading(loading: Boolean?) {}
+    private fun displayLoading(loading: Boolean) {
+        progressBar.setVisible(loading)
+    }
 
     private fun displayError(message: String) {
       toast(message)

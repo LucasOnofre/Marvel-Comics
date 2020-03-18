@@ -28,7 +28,7 @@ data class Character(
     val name: String,
     val resourceURI: String,
     val series: Serie,
-    val stories: Storie,
+    val stories: Story,
     val thumbnail: Thumbnail,
     val urls: List<Url>
 ):Serializable
@@ -36,11 +36,12 @@ data class Character(
 data class Comic(
     val available: Int,
     val collectionURI: String,
-    val items: List<Item>,
+    @SerializedName("items")
+    val comicSummary: List<ComicSummary>,
     val returned: Int
 ):Serializable
 
-data class Item(
+data class ComicSummary(
     val name: String,
     val resourceURI: String
 ):Serializable
@@ -48,6 +49,7 @@ data class Item(
 data class Event(
     val available: Int,
     val collectionURI: String,
+    @SerializedName("items")
     val eventSummary: List<EventSummary>,
     val returned: Int
 ):Serializable
@@ -60,6 +62,7 @@ data class EventSummary(
 data class Serie(
     val available: Int,
     val collectionURI: String,
+    @SerializedName("items")
     val serieSummary: List<SerieSummary>,
     val returned: Int
 ):Serializable
@@ -69,9 +72,10 @@ data class SerieSummary(
     val resourceURI: String
 ):Serializable
 
-data class Storie(
+data class Story(
     val available: Int,
     val collectionURI: String,
+    @SerializedName("items")
     val storySummary: List<StorySummary>,
     val returned: Int
 ):Serializable

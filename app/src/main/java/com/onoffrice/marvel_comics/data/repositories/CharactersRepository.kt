@@ -11,12 +11,14 @@ import io.reactivex.Single
 object CharactersRepository {
 
     private val service = RetrofitSingle.createService(
-        url          = NetworkConstants.BASE_URL,
-        serviceClass = MarvelService::class.java,
-        interceptors = listOf(AddHeaderInterceptor())
+        url             = NetworkConstants.BASE_URL,
+        serviceClass    = MarvelService::class.java,
+        interceptors    = listOf(AddHeaderInterceptor())
     )
 
     fun getCharacters(limitRegister: Int, offset: Int) = service.getCharacters(limitRegister, offset)
+
+    fun getCharacterComics(characterId: Int) = service.getCharacterComics(characterId)
 
 }
 
