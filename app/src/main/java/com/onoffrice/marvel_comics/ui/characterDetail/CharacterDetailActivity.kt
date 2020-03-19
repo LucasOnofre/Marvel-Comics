@@ -7,10 +7,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.onoffrice.marvel_comics.Constants
 import com.onoffrice.marvel_comics.R
 import com.onoffrice.marvel_comics.data.remote.model.Character
+import com.onoffrice.marvel_comics.data.remote.model.ComicModel
 import com.onoffrice.marvel_comics.ui.AppInjector
 import com.onoffrice.marvel_comics.ui.base.BaseActivity
+import com.onoffrice.marvel_comics.ui.mostExpensiveComic.createMostExpensiveComicIntent
 import com.onoffrice.marvel_comics.utils.extensions.loadImage
 import com.onoffrice.marvel_comics.utils.extensions.setVisible
+import com.onoffrice.marvel_comics.utils.extensions.startActivitySlideTransition
 import kotlinx.android.synthetic.main.activity_character_detail.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
@@ -37,10 +40,15 @@ class CharacterDetailActivity : BaseActivity(R.layout.activity_character_detail)
 
     private fun setObservers() {
         viewModel.run {
-            character.observe(this@CharacterDetailActivity,    Observer { displayCharactersDetail(it)})
-            loadingEvent.observe(this@CharacterDetailActivity, Observer { displayLoading(it) })
-            errorEvent.observe(this@CharacterDetailActivity,   Observer { displayError(it) })
+            character.observe(this@CharacterDetailActivity,       Observer { displayCharactersDetail(it)})
+            comic.observe(this@CharacterDetailActivity, Observer { openMostExpensiveCharacterComics(it)})
+            loadingEvent.observe(this@CharacterDetailActivity,    Observer { displayLoading(it) })
+            errorEvent.observe(this@CharacterDetailActivity,      Observer { displayError(it) })
         }
+    }
+
+    private fun openMostExpensiveCharacterComics(comic: ComicModel) {
+        startActivitySlideTransition(createMostExpensiveComicIntent(comic))
     }
 
     private fun displayCharactersDetail(character: Character) {

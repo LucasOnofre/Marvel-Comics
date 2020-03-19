@@ -24,7 +24,8 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
     private val charactersAdapter: CharactersAdapter by lazy {
         val adapter = CharactersAdapter(object : CharactersAdapter.CharacterClickListener{
             override fun onClickCharacter(character: Character) {
-                startActivitySlideTransition(createCharacterDetailActivityIntent(character))
+                startActivitySlideTransition(createCharacterDetailActivityIntent(character)
+                )
             }
         })
 

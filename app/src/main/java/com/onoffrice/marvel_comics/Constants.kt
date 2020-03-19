@@ -11,5 +11,6 @@ object Constants {
     const val COUNTRY_BR = "BR"
 
     const val EXTRA_CHARACTER_DETAIL = "$PACKAGE_NAME.EXTRA_CHARACTER_DETAIL"
+    const val EXTRA_COMIC = "$PACKAGE_NAME.EXTRA_COMIC"
 
 }

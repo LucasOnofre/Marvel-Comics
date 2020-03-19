@@ -88,6 +88,7 @@
     <dimen name="character_item_card_radius">4dp</dimen>
     <dimen name="character_detail_poster_radius">8dp</dimen>
     <dimen name="poster_height">250dp</dimen>
+    <dimen name="poster_comic_height">500dp</dimen>
 
     <!--SPACING-->
     <dimen name="card_margin">8dp</dimen>

@@ -8,7 +8,7 @@ data class CharacterDataWrapper(
 
     @SerializedName("data")
     val charactersData: CharacterDataContainer
-)
+):Serializable
 
 data class CharacterDataContainer(
     val count: Int,
@@ -17,7 +17,7 @@ data class CharacterDataContainer(
     @SerializedName("results")
     val characters: List<Character>,
     val total: Int
-)
+):Serializable
 
 data class Character(
     val comics: Comic,

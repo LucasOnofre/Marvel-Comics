@@ -15,9 +15,8 @@
 
 
     <string name="poster_game_title">Titulo</string>
-    <string name="game_detail_channels_title_txt">Canais:</string>
-    <string name="game_detail_views_title_txt">Visualizações:</string>
-    <string name="characters_toolbar_title">Characters</string>
+    <string name="comic_description">Descrição</string>
+    <string name="comic_price">Preço: %s</string>
     <string name="btn_most_expensive_text">R$</string>
 
 </resources>

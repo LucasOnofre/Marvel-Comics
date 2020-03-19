@@ -3,6 +3,7 @@ package com.onoffrice.marvel_comics.ui
 import com.onoffrice.marvel_comics.data.repositories.CharactersRepository
 import com.onoffrice.marvel_comics.ui.characterDetail.CharacterDetailViewModel
 import com.onoffrice.marvel_comics.ui.characters.CharactersViewModel
+import com.onoffrice.marvel_comics.ui.mostExpensiveComic.MostExpensiveComicViewModel
 
 
 object AppInjector {
@@ -11,6 +12,8 @@ object AppInjector {
     fun getCharacterViewModelFactory() = CharactersViewModel.Factory(CharactersRepository)
 
     fun getCharacterDetailViewModelFactory() = CharacterDetailViewModel.Factory(CharactersRepository)
+
+    fun getMostExpensiveComicViewModelFactory() = MostExpensiveComicViewModel.Factory()
 
 
 //    //REPOSITORIES
