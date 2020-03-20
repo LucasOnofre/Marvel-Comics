@@ -4,20 +4,22 @@ import android.content.Context
 import android.nfc.tech.MifareUltralight
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.onoffrice.marvel_comics.R
 import com.onoffrice.marvel_comics.data.remote.model.Character
-import com.onoffrice.marvel_comics.ui.AppInjector
 import com.onoffrice.marvel_comics.ui.base.BaseActivity
 import com.onoffrice.marvel_comics.ui.characterDetail.createCharacterDetailActivityIntent
 import com.onoffrice.marvel_comics.utils.extensions.startActivitySlideTransition
 import kotlinx.android.synthetic.main.activity_characters.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharactersActivity : BaseActivity(R.layout.activity_characters) {
+
+   private val viewModel by inject<CharactersViewModel>()
 
     private var isLoading: Boolean = false
 
@@ -36,15 +38,19 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
         adapter
     }
 
-    private val viewModel by lazy {
-        val factory = AppInjector.getCharacterViewModelFactory()
-        ViewModelProvider(this, factory).get(CharactersViewModel::class.java)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setObservers()
+        setListeners()
         viewModel.getCharacters()
+
+    }
+
+    private fun setListeners() {
+        swipeRefresh.setOnRefreshListener {
+            charactersAdapter.resetList()
+            viewModel.getCharacters()
+        }
     }
 
     private fun onScrollListener(): RecyclerView.OnScrollListener {

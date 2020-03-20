@@ -9,10 +9,7 @@ import com.onoffrice.marvel_comics.data.remote.model.Character
 import com.onoffrice.marvel_comics.utils.extensions.loadImage
 import kotlinx.android.synthetic.main.adapter_character_item.view.*
 
-class CharactersAdapter (
-    private val listener: CharacterClickListener
-
-): RecyclerView.Adapter<CharactersAdapter.GameViewHolderItem>() {
+class CharactersAdapter (private val listener: CharacterClickListener?): RecyclerView.Adapter<CharactersAdapter.GameViewHolderItem>() {
 
     interface CharacterClickListener {
         fun onClickCharacter(character: Character)
@@ -49,13 +46,18 @@ class CharactersAdapter (
 
             // Character click listener
             holder.itemView.setOnClickListener {
-                listener.onClickCharacter(characterItem)
+                listener?.onClickCharacter(characterItem)
             }
         }
     }
 
+    fun resetList() {
+        list.clear()
+        notifyDataSetChanged()
+    }
+
     class GameViewHolderItem(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val poster = itemView.poster
+        val poster= itemView.poster
         val title  = itemView.title
     }
 }

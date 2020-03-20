@@ -3,12 +3,10 @@ package com.onoffrice.marvel_comics.ui.characterDetail
 import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.onoffrice.marvel_comics.Constants
 import com.onoffrice.marvel_comics.R
 import com.onoffrice.marvel_comics.data.remote.model.Character
 import com.onoffrice.marvel_comics.data.remote.model.ComicModel
-import com.onoffrice.marvel_comics.ui.AppInjector
 import com.onoffrice.marvel_comics.ui.base.BaseActivity
 import com.onoffrice.marvel_comics.ui.mostExpensiveComic.createMostExpensiveComicIntent
 import com.onoffrice.marvel_comics.utils.extensions.loadImage
@@ -17,13 +15,11 @@ import com.onoffrice.marvel_comics.utils.extensions.startActivitySlideTransition
 import kotlinx.android.synthetic.main.activity_character_detail.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
+import org.koin.android.ext.android.inject
 
 class CharacterDetailActivity : BaseActivity(R.layout.activity_character_detail) {
 
-    private val viewModel by lazy {
-        val factory = AppInjector.getCharacterDetailViewModelFactory()
-        ViewModelProvider(this, factory).get(CharacterDetailViewModel::class.java)
-    }
+    private val viewModel by inject<CharacterDetailViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
