@@ -9,6 +9,7 @@ import com.onoffrice.marvel_comics.data.remote.model.Character
 import com.onoffrice.marvel_comics.data.remote.model.ComicModel
 import com.onoffrice.marvel_comics.ui.base.BaseActivity
 import com.onoffrice.marvel_comics.ui.mostExpensiveComic.createMostExpensiveComicIntent
+import com.onoffrice.marvel_comics.utils.extensions.isNetworkConnected
 import com.onoffrice.marvel_comics.utils.extensions.loadImage
 import com.onoffrice.marvel_comics.utils.extensions.setVisible
 import com.onoffrice.marvel_comics.utils.extensions.startActivitySlideTransition
@@ -30,16 +31,20 @@ class CharacterDetailActivity : BaseActivity(R.layout.activity_character_detail)
 
     private fun setListeners() {
         mostExpensiveComicBtn.setOnClickListener {
-            viewModel.getCharacterComics()
+            if (isNetworkConnected()) {
+                viewModel.getCharacterComics()
+            } else {
+                toast(getString(R.string.no_network_connection))
+            }
         }
     }
 
     private fun setObservers() {
         viewModel.run {
-            character.observe(this@CharacterDetailActivity,       Observer { displayCharactersDetail(it)})
-            comic.observe(this@CharacterDetailActivity, Observer { openMostExpensiveCharacterComics(it)})
-            loadingEvent.observe(this@CharacterDetailActivity,    Observer { displayLoading(it) })
-            errorEvent.observe(this@CharacterDetailActivity,      Observer { displayError(it) })
+            character.observe(this@CharacterDetailActivity,    Observer { displayCharactersDetail(it) })
+            comic.observe(this@CharacterDetailActivity,        Observer { openMostExpensiveCharacterComics(it) })
+            loadingEvent.observe(this@CharacterDetailActivity, Observer { displayLoading(it) })
+            errorEvent.observe(this@CharacterDetailActivity,   Observer { displayError(it) })
         }
     }
 
@@ -51,7 +56,7 @@ class CharacterDetailActivity : BaseActivity(R.layout.activity_character_detail)
         setToolbar(character.name,true)
         characterBio.text  = character.description
 
-        //Loads the character poster using Picasso
+        //Load's the character poster using Picasso
         characterPoster.loadImage(character.thumbnail.getPathExtension())
     }
 

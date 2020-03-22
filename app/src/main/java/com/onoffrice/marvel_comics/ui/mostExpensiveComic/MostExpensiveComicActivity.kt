@@ -39,9 +39,9 @@ class MostExpensiveComicActivity : BaseActivity(R.layout.activity_most_expensive
 
     private fun displayComicDetail(comic: ComicModel) {
         comicPoster.loadImage(comic.thumbnail.getPathExtension())
-        comicTitle.text = comic.title
+        comicTitle.text       = comic.title
+        comicPrice.text       = getString(R.string.comic_price, comic.prices[0].price.toString())
         comicDescription.text = comic.description
-        comicPrice.text = getString(R.string.comic_price, comic.prices[0].price.toString())
     }
 
     private fun displayLoading(loading: Boolean) {

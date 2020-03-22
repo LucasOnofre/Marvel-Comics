@@ -16,11 +16,10 @@ class CharacterDetailViewModel(private val repository: CharactersRepository) : V
 
     private val comicPrices: MutableList<ComicModel> = mutableListOf()
 
-    val character       = SingleLiveEvent<Character>()
-    val errorEvent      = SingleLiveEvent<String>()
-    val loadingEvent    = SingleLiveEvent<Boolean>()
-    val comic = SingleLiveEvent<ComicModel>()
-
+    val comic        = SingleLiveEvent<ComicModel>()
+    val character    = SingleLiveEvent<Character>()
+    val errorEvent   = SingleLiveEvent<String>()
+    val loadingEvent = SingleLiveEvent<Boolean>()
 
      private val disposable = CompositeDisposable()
 
@@ -35,8 +34,7 @@ class CharacterDetailViewModel(private val repository: CharactersRepository) : V
                     loadingEvent.value = it
                 },
                 onSuccess = {
-                   // handleCharacterComicsResponse(it.characterComicsData.comics)
-                    comic.value = it.characterComicsData.comics[0]
+                    handleCharacterComicsResponse(it.characterComicsData.comics)
                 },
                 onError = {
                     errorEvent.value = it.message
@@ -46,19 +44,11 @@ class CharacterDetailViewModel(private val repository: CharactersRepository) : V
     }
 
     private fun handleCharacterComicsResponse(comics: List<ComicModel>) {
-
+        comic.value = comics[0]
     }
 
     override fun onCleared() {
         disposable.dispose()
         super.onCleared()
-    }
-
-
-    class Factory(private val repository: CharactersRepository) : ViewModelProvider.NewInstanceFactory() {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            @Suppress("UNCHECKED_CAST")
-            return CharacterDetailViewModel(repository) as T
-        }
     }
 }

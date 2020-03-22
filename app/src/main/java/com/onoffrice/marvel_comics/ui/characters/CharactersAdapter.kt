@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.onoffrice.marvel_comics.R
 import com.onoffrice.marvel_comics.data.remote.model.Character
+import com.onoffrice.marvel_comics.utils.extensions.fadeUpItemListAnimation
 import com.onoffrice.marvel_comics.utils.extensions.loadImage
 import kotlinx.android.synthetic.main.adapter_character_item.view.*
 
@@ -38,6 +39,8 @@ class CharactersAdapter (private val listener: CharacterClickListener?): Recycle
     }
 
     override fun onBindViewHolder(holder: GameViewHolderItem, position: Int) {
+        holder.itemView.fadeUpItemListAnimation(position,200)
+
         val characterItem = list[position]
 
         characterItem.let {

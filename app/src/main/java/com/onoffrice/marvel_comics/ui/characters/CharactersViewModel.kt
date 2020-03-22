@@ -18,8 +18,8 @@ class CharactersViewModel(private val repository: CharactersRepository) : ViewMo
 
      private val disposable = CompositeDisposable()
 
-    fun getCharacters(offset: Int = 0) {
-        disposable.add(repository.getCharacters(LIMIT_REGISTER, offset).singleSubscribe(
+    fun getCharacters(offset: Int?) {
+        disposable.add(repository.getCharacters(LIMIT_REGISTER, offset ?: 0).singleSubscribe(
                 onLoading = {
                     loadingEvent.value = it
                 },
@@ -41,12 +41,5 @@ class CharactersViewModel(private val repository: CharactersRepository) : ViewMo
     override fun onCleared() {
         disposable.dispose()
         super.onCleared()
-    }
-
-    class Factory(private val repository: CharactersRepository) : ViewModelProvider.NewInstanceFactory() {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            @Suppress("UNCHECKED_CAST")
-            return CharactersViewModel(repository) as T
-        }
     }
 }

@@ -13,10 +13,12 @@
     <string name="action_take_picture">Tirar Foto</string>
     <string name="action_try_again">Tentar Novamente</string>
 
-
     <string name="poster_game_title">Titulo</string>
     <string name="comic_description">Descrição</string>
     <string name="comic_price">Preço: %s</string>
     <string name="btn_most_expensive_text">R$</string>
+
+    <!--NO NETWORK ERRORS-->
+    <string name="no_network_connection">Sem conexão com internet</string>
 
 </resources>

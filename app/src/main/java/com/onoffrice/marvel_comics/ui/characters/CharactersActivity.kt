@@ -10,12 +10,12 @@ import com.onoffrice.marvel_comics.R
 import com.onoffrice.marvel_comics.data.remote.model.Character
 import com.onoffrice.marvel_comics.ui.base.BaseActivity
 import com.onoffrice.marvel_comics.ui.characterDetail.createCharacterDetailActivityIntent
+import com.onoffrice.marvel_comics.utils.extensions.isNetworkConnected
 import com.onoffrice.marvel_comics.utils.extensions.startActivitySlideTransition
 import kotlinx.android.synthetic.main.activity_characters.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharactersActivity : BaseActivity(R.layout.activity_characters) {
 
@@ -42,14 +42,14 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
         super.onCreate(savedInstanceState)
         setObservers()
         setListeners()
-        viewModel.getCharacters()
+        getCharacters()
 
     }
 
     private fun setListeners() {
         swipeRefresh.setOnRefreshListener {
             charactersAdapter.resetList()
-            viewModel.getCharacters()
+            getCharacters()
         }
     }
 
@@ -67,9 +67,17 @@ class CharactersActivity : BaseActivity(R.layout.activity_characters) {
                 ) {
                     isLoading = true
                     displayLoading(isLoading)
-                    viewModel.getCharacters(totalItemCount)
+                    getCharacters(totalItemCount)
                 }
             }
+        }
+    }
+
+    private fun getCharacters(totalItemCount: Int? = 0) {
+        if (isNetworkConnected()) {
+            viewModel.getCharacters(totalItemCount)
+        } else {
+            toast(getString(R.string.no_network_connection))
         }
     }
 
