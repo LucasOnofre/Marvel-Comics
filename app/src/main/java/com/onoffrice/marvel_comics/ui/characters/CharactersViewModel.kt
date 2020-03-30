@@ -1,7 +1,6 @@
 package com.onoffrice.marvel_comics.ui.characters
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.onoffrice.marvel_comics.data.remote.model.Character
 import com.onoffrice.marvel_comics.data.repositories.CharactersRepository
 import com.onoffrice.marvel_comics.utils.SingleLiveEvent

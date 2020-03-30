@@ -4,8 +4,6 @@ import androidx.multidex.MultiDexApplication
 import com.onoffrice.marvel_comics.data.di.KoinInjector
 import com.onoffrice.marvel_comics.data.local.PreferencesHelper
 import com.onoffrice.marvel_comics.data.remote.RemotePreferencesHelper
-import com.onoffrice.marvel_comics.data.remote.UserUnauthorizedBus
-import com.onoffrice.marvel_comics.utils.extensions.observableSubscribe
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -16,9 +14,11 @@ class BaseApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
 
+        setKoin()
         setPreferencesHelper()
-        setBus()
+    }
 
+    private fun setKoin() {
         startKoin {
             androidLogger(Level.INFO)
             androidContext(this@BaseApplication)
@@ -37,15 +37,4 @@ class BaseApplication : MultiDexApplication() {
         PreferencesHelper.init(applicationContext)
         RemotePreferencesHelper.init(applicationContext)
     }
-
-    private fun setBus() {
-        UserUnauthorizedBus.getEvents().observableSubscribe(onNext = {
-            startAuthenticationActivity()
-        })
-    }
-
-    private fun startAuthenticationActivity() {
-        // Todo startActivity()
-    }
-
 }

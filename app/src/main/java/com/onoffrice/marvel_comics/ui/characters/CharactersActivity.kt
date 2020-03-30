@@ -19,7 +19,7 @@ import org.koin.android.ext.android.inject
 
 class CharactersActivity : BaseActivity(R.layout.activity_characters) {
 
-   private val viewModel by inject<CharactersViewModel>()
+    private val viewModel by inject<CharactersViewModel>()
 
     private var isLoading: Boolean = false
 
