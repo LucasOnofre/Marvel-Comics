@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitSingle{
 
-    /** Singleton to instanciate the Retrofit in all the application **/
     fun <S> createService(serviceClass: Class<S>, interceptors: List<Interceptor>? = null, url: String): S {
         val retrofit = Retrofit.Builder()
             .baseUrl(url)
@@ -38,15 +37,17 @@ object RetrofitSingle{
     }
 
     private fun createParametersDefault(chain: Interceptor.Chain): Response {
-        val timeStamp = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
-        var request = chain.request()
+        val timeStamp      = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
+        var request      = chain.request()
         val builder = request.url().newBuilder()
 
-        builder.addQueryParameter("apikey", NetworkConstants.API_PUBLIC_KEY)
+        builder
+            .addQueryParameter("apikey", NetworkConstants.API_PUBLIC_KEY)
             .addQueryParameter("hash", MarvelHashGenerate.generate(timeStamp, NetworkConstants.API_PRIVATE_KEY, NetworkConstants.API_PUBLIC_KEY))
             .addQueryParameter("ts", timeStamp.toString())
 
         request = request.newBuilder().url(builder.build()).build()
+
         return chain.proceed(request)
 
     }
